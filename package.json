@@ -22,7 +22,8 @@
   "homepage": "https://github.com/Am0031/team-profile-generator#readme",
   "dependencies": {
     "email-validator": "^2.0.4",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "open": "^8.4.0"
   },
   "devDependencies": {
     "jest": "^28.1.1"
