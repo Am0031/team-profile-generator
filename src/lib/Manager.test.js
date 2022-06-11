@@ -17,21 +17,25 @@ describe("Manager", () => {
   });
 
   describe("data", () => {
-    it("should set the name property under the key 'name'", () => {
+    it("should set the name value under the key 'name'", () => {
       const actual = new Manager(testData);
       expect(actual.name).toEqual("Bob Smith");
     });
-    it("should set the id property under the key 'id'", () => {
+    it("should set the id value under the key 'id'", () => {
       const actual = new Manager(testData);
       expect(actual.id).toEqual("521");
     });
-    it("should set the email property under the key 'email'", () => {
+    it("should set the email value under the key 'email'", () => {
       const actual = new Manager(testData);
       expect(actual.email).toEqual("bob.smith@example.org");
     });
-    it("should set the role property under the key 'role'", () => {
-      const actual = new Employee(testData);
+    it("should set the role value under the key 'role'", () => {
+      const actual = new Manager(testData);
       expect(actual.role).toEqual("Manager");
+    });
+    it("should set the office number value under the key 'officeNumber'", () => {
+      const actual = new Manager(testData);
+      expect(actual.officeNumber).toEqual("45");
     });
   });
 
