@@ -48,6 +48,28 @@ const managerQuestions = [
   },
 ];
 
+const selectionQuestion = [
+  {
+    type: "list",
+    name: "employeeRole",
+    message: "What team member would you like to add next?",
+    choices: [
+      {
+        name: "Engineer",
+        value: "engineer",
+      },
+      {
+        name: "Intern",
+        value: "intern",
+      },
+      {
+        name: "None",
+        value: "none",
+      },
+    ],
+  },
+];
+
 const engineerQuestions = [
   {
     type: "input",
@@ -118,4 +140,20 @@ const internQuestions = [
   },
 ];
 
-module.exports = { managerQuestions, engineerQuestions, internQuestions };
+const filenameQuestion = [
+  {
+    type: "input",
+    name: "filename",
+    message:
+      "What name would you like for your file? Please provide only the name without the extension.",
+    default: "team-profile",
+  },
+];
+
+module.exports = {
+  managerQuestions,
+  selectionQuestion,
+  engineerQuestions,
+  internQuestions,
+  filenameQuestion,
+};
