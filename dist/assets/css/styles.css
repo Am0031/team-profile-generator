@@ -1,0 +1,21 @@
+body {
+}
+
+p {
+  margin: 0;
+}
+
+.list-container {
+  padding: 5px;
+  background-color: lightgrey;
+}
+
+.bg-manager {
+  background-color: lightskyblue;
+}
+.bg-engineer {
+  background-color: lightgoldenrodyellow;
+}
+.bg-intern {
+  background-color: lightcyan;
+}
