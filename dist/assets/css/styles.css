@@ -1,41 +1,56 @@
+/*General styling for the whole page - root variables*/
+:root {
+  --header: lightcoral;
+  --manager-name: lightskyblue;
+  --engineer-name: lightgoldenrodyellow;
+  --intern-name: lightcyan;
+  --list-style: lightgrey;
+}
+
+/*General styling for the whole page - body settings*/
 body {
   box-sizing: border-box;
   font-family: "Roboto";
   font-size: 16px;
+  min-height: 100vh;
+  margin: 0;
 }
 section {
-  margin: 10px;
+  margin: 0.6rem;
 }
 
 p {
   margin: 0;
 }
 
+/*Header styling*/
 .header-title {
-  background-color: lightcoral;
+  background-color: var(--header);
 }
 
+/*Employee card styling*/
 .employee-card {
   min-width: 18rem;
 }
 .list-container {
-  padding: 5px;
-  background-color: lightgrey;
+  padding: 0.3rem;
+  background-color: var(--list-style);
 }
 
 .bg-manager {
-  background-color: lightskyblue;
+  background-color: var(--manager-name);
 }
 .bg-engineer {
-  background-color: lightgoldenrodyellow;
+  background-color: var(--engineer-name);
 }
 .bg-intern {
-  background-color: lightcyan;
+  background-color: var(--intern-name);
 }
 
+/*Media query for responsiveness with screen size*/
 @media screen and (max-width: 590px) {
   section {
-    margin: 10px 0 10px 0;
+    margin: 0.6rem 0 0.6rem 0;
   }
   .employee-card {
     min-width: 15rem;
@@ -48,7 +63,7 @@ p {
     font-size: 12px;
   }
   section {
-    margin: 5px 0 5px 0;
+    margin: 0.5rem 0 0.5rem 0;
   }
   .employee-card {
     min-width: none;
