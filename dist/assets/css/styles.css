@@ -1,5 +1,10 @@
 body {
   box-sizing: border-box;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+section {
+  margin: 10px;
 }
 
 p {
@@ -26,4 +31,27 @@ p {
 }
 .bg-intern {
   background-color: lightcyan;
+}
+
+@media screen and (max-width: 590px) {
+  section {
+    margin: 10px 0 10px 0;
+  }
+  .employee-card {
+    min-width: 15rem;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    font-size: 12px;
+  }
+  section {
+    margin: 5px 0 5px 0;
+  }
+  .employee-card {
+    min-width: none;
+    width: 95%;
+  }
 }
