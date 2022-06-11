@@ -1,3 +1,5 @@
+const Employee = require("./Employee");
+
 describe("Employee", () => {
   const testData = {
     name: "Bob Smith",
