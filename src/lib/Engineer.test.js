@@ -6,7 +6,7 @@ describe("Engineer", () => {
     id: "521",
     email: "bob.smith@example.org",
     role: "Engineer",
-    github: "Bob45",
+    githubUsername: "Bob45",
   };
 
   describe("instance", () => {
@@ -35,7 +35,7 @@ describe("Engineer", () => {
     });
     it("should set the github value under the key 'github'", () => {
       const actual = new Engineer(testData);
-      expect(actual.github).toEqual("Bob45");
+      expect(actual.githubUsername).toEqual("Bob45");
     });
   });
 
@@ -46,7 +46,7 @@ describe("Engineer", () => {
     it("should get the github username of the engineer created", () => {
       const engineer = new Engineer(testData);
       const actual = engineer.getGithubUsername();
-      expect(actual).toEqual(engineer.github);
+      expect(actual).toEqual(engineer.githubUsername);
     });
   });
 });
