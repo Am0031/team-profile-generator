@@ -30,14 +30,14 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <header class="jumbotron jumbotron-fluid header-title">
+    <header class="jumbotron jumbotron-fluid header-title mb-0">
       <div class="container">
         <h1 class="display-4 text-center">Team name</h1>
       </div>
     </header>
     <main class="main" id="main">
       <section
-        class="manager-container d-flex flex-column align-items-center"
+        class="manager-container d-flex flex-column align-items-center separator"
         id="manager-section"
       >
         <div class="card employee-card m-2">
@@ -64,7 +64,7 @@
         </div>
       </section>
       <section
-        class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center"
+        class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
         id="engineer-section"
       >
         <div class="card employee-card m-2">
@@ -160,12 +160,15 @@
             </li>
           </ul>
         </div>
+        <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
+          No engineers
+        </div>
       </section>
       <section
         class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
         id="intern-section"
       >
-        <div class="card employee-card m-2">
+        <!-- <div class="card employee-card m-2">
           <div class="card-body bg-intern">
             <h5 class="card-title">Mike</h5>
             <p class="card-subtitle">
@@ -217,9 +220,15 @@
               <p class="link-text">University of Nottingham</p>
             </li>
           </ul>
+        </div> -->
+        <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
+          No interns
         </div>
       </section>
     </main>
+    <footer class="footer p-3">
+      <div class="footer-text w-100 text-center">&copy; 2022 Copyright</div>
+    </footer>
     <script src="./assets/js/script.js" async defer></script>
   </body>
 </html>

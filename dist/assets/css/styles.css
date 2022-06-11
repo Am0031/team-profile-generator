@@ -14,17 +14,27 @@ body {
   font-size: 16px;
   min-height: 100vh;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
-section {
-  margin: 0.6rem;
+main {
+  flex: 2;
+  margin-bottom: 2rem;
 }
 
+section {
+  padding: 0.6rem;
+}
+.separator {
+  border-bottom: 1px solid var(--header);
+}
 p {
   margin: 0;
 }
 
-/*Header styling*/
-.header-title {
+/*Header and footer styling*/
+.header-title,
+.footer {
   background-color: var(--header);
 }
 
@@ -50,7 +60,7 @@ p {
 /*Media query for responsiveness with screen size*/
 @media screen and (max-width: 590px) {
   section {
-    margin: 0.6rem 0 0.6rem 0;
+    padding: 0.6rem 0 0.6rem 0;
   }
   .employee-card {
     min-width: 15rem;
@@ -63,7 +73,7 @@ p {
     font-size: 12px;
   }
   section {
-    margin: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 0;
   }
   .employee-card {
     min-width: none;
