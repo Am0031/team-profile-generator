@@ -41,8 +41,8 @@ describe("Manager", () => {
     //new method for office number specific to Manager
     it("should get the office number of the manager created", () => {
       const manager = new Manager(testData);
-      const actual = manager.getEmail();
-      expect(actual).toEqual(manager.email);
+      const actual = manager.getOfficeNumber();
+      expect(actual).toEqual(manager.officeNumber);
     });
   });
 });
