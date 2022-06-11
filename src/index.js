@@ -26,6 +26,10 @@ const getTeamInfo = () => {
   //if exit, set in progress to false
 };
 
+const getFileName = () => {
+  //prompt question for filename (inquirer)
+};
+
 //main function
 const init = () => {
   console.log("Let's build your team structure!");
@@ -40,7 +44,7 @@ const init = () => {
   const filename = getFileName();
 
   //generate html string
-  const htmlString = generateHtml();
+  const htmlString = generateHtml(managerAnswers, teamAnswers, filename);
 
   //write to new file
   writeToFile(filename, htmlString);
