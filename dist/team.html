@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Team Profile</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -30,13 +30,17 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <header></header>
+    <header class="jumbotron jumbotron-fluid header-title">
+      <div class="container">
+        <h1 class="display-4 text-center">Team name</h1>
+      </div>
+    </header>
     <main class="main" id="main">
       <section
         class="manager-container d-flex flex-column align-items-center m-3"
         id="manager-section"
       >
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card">
           <div class="card-body bg-manager">
             <h5 class="card-title">Bob</h5>
             <p class="card-subtitle">
@@ -61,7 +65,7 @@
         class="engineer-container m-3 d-flex flex-row justify-content-around align-items-center"
         id="engineer-section"
       >
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card" style="width: 18rem">
           <div class="card-body bg-engineer">
             <h5 class="card-title">John</h5>
             <p class="card-subtitle">
@@ -84,7 +88,7 @@
             </li>
           </ul>
         </div>
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card">
           <div class="card-body bg-engineer">
             <h5 class="card-title">James</h5>
             <p class="card-subtitle">
@@ -107,7 +111,7 @@
             </li>
           </ul>
         </div>
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card">
           <div class="card-body bg-engineer">
             <h5 class="card-title">Ben</h5>
             <p class="card-subtitle">
@@ -135,7 +139,7 @@
         class="intern-container m-3 d-flex flex-row justify-content-around align-items-center"
         id="intern-section"
       >
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card">
           <div class="card-body bg-intern">
             <h5 class="card-title">Mike</h5>
             <p class="card-subtitle">
@@ -154,11 +158,11 @@
               <p class="link-text pr-2">
                 <i class="fa-solid fa-graduation-cap"></i> School:
               </p>
-              <a href="#" class="card-link">University of Birmingham</a>
+              <a href="#" class="card-link">UoB</a>
             </li>
           </ul>
         </div>
-        <div class="card" style="width: 18rem">
+        <div class="card employee-card">
           <div class="card-body bg-intern">
             <h5 class="card-title">Max</h5>
             <p class="card-subtitle">
@@ -180,6 +184,7 @@
               <a href="#" class="card-link">University of Nottingham</a>
             </li>
           </ul>
+        </div>
       </section>
     </main>
     <script src="./assets/js/script.js" async defer></script>
