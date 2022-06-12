@@ -1,3 +1,6 @@
+//requiring change-case module
+const { capitalCase } = require("change-case");
+
 const generateHtml = (manager, team) => {
   //static string for html head section
   const headHtml = `<head>
@@ -28,7 +31,7 @@ const generateHtml = (manager, team) => {
   //create string for header
   const headerHtml = `<header class="jumbotron jumbotron-fluid header-title mb-0">
   <div class="container">
-    <h1 class="display-4 text-center">${manager.team}</h1>
+    <h1 class="display-4 text-center">${capitalCase(manager.team)}</h1>
   </div>
 </header>`;
 
@@ -39,7 +42,7 @@ const generateHtml = (manager, team) => {
         id="manager-section">
         <div class="card employee-card m-2">
           <div class="card-body bg-manager">
-            <h5 class="card-title">${manager.name}</h5>
+            <h5 class="card-title">${capitalCase(manager.name)}</h5>
             <p class="card-subtitle">
               <i class="fa-solid fa-people-roof"></i> Manager
             </p>
@@ -55,7 +58,9 @@ const generateHtml = (manager, team) => {
               >
             </li>
             <li class="list-group-item">
-              <i class="fa-solid fa-door-closed"></i> Office number: ${manager.officeNumber}
+              <i class="fa-solid fa-door-closed"></i> Office number: ${
+                manager.officeNumber
+              }
             </li>
           </ul>
         </div>
@@ -67,7 +72,7 @@ const generateHtml = (manager, team) => {
     const createEngineerCardHtml = (each) => {
       return `<div class="card employee-card m-2">
     <div class="card-body bg-engineer">
-      <h5 class="card-title">${each.name}</h5>
+      <h5 class="card-title">${capitalCase(each.name)}</h5>
       <p class="card-subtitle">
         <i class="fa-solid fa-brain"></i> Engineer
       </p>
@@ -114,7 +119,7 @@ const generateHtml = (manager, team) => {
     const createInternCardHtml = (each) => {
       return `<div class="card employee-card m-2">
           <div class="card-body bg-intern">
-            <h5 class="card-title">${each.name}</h5>
+            <h5 class="card-title">${capitalCase(each.name)}</h5>
             <p class="card-subtitle">
               <i class="fa-solid fa-seedling"></i> Intern
             </p>
