@@ -1,8 +1,4 @@
-//requiring the inquirer module
-const inquirer = require("inquirer");
-
-//requiring the other js files
-const writeToFile = require("./utils/writeToFile");
+//requiring the utils js files
 const {
   managerQuestions,
   selectionQuestion,
@@ -10,13 +6,9 @@ const {
   internQuestions,
   filenameQuestion,
 } = require("./utils/teamQuestions");
+const getUserAnswers = require("./utils/getUserAnswers");
 const generateHtml = require("./utils/generateHtml");
-
-//function to get answers from user
-const getUserAnswers = async (questions) => {
-  const answers = await inquirer.prompt(questions);
-  return answers;
-};
+const writeToFile = require("./utils/writeToFile");
 
 //function to get the team structure depending on selection question answers
 const getTeamInfo = async () => {
