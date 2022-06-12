@@ -1,6 +1,12 @@
 //requiring chalk module from Node.js core - chalk will be used to style the lines in the CLI
 const chalk = require("chalk");
 
+//requiring the open module
+const open = require("open");
+
+//requiring the change-case for correct filename
+const { paramCase } = require("change-case");
+
 //requiring the utils js files
 const {
   managerQuestions,
@@ -77,7 +83,9 @@ const init = async () => {
 
   console.log(chalk.green("Your html file has been created successfully!"));
   //open created file
-  //open("http://localhost:port/filename", { app: "chrome" });
+  open(`http://127.0.0.1:5500/dist/${paramCase(filename.filename)}.html`, {
+    app: "chrome",
+  });
 };
 
 init();
