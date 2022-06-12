@@ -1,3 +1,6 @@
+//requiring chalk module from Node.js core - chalk will be used to style the lines in the CLI
+const chalk = require("chalk");
+
 //requiring the utils js files
 const {
   managerQuestions,
@@ -48,29 +51,31 @@ const getTeamInfo = async () => {
 //main function
 const init = async () => {
   console.log(
-    "Let's build your team structure! Starting with the team manager..."
+    chalk.blue(
+      "Let's build your team structure! Starting with the team manager..."
+    )
   );
 
   //start the manager questions
   const manager = await getUserAnswers(managerQuestions);
 
-  console.log("Now let's add engineers and interns!");
+  console.log(chalk.blue("Now let's add engineers and interns!"));
   //move onto team structure
   const team = await getTeamInfo();
 
-  console.log("Your team is complete.");
+  console.log(chalk.green("Your team is complete."));
   //ask for filename
   const filename = await getUserAnswers(filenameQuestion);
 
-  console.log("Generating your html string from your answers...");
+  console.log(chalk.yellow("Generating your html string from your answers..."));
   //generate html string
-  const htmlString = generateHtml(manager, team, filename);
+  const htmlString = generateHtml(manager, team);
 
-  console.log("Creating your html file...");
+  console.log(chalk.yellow("Creating your html file..."));
   //write to new file
   writeToFile(filename, htmlString);
 
-  console.log("Your html file has been created successfully!");
+  console.log(chalk.green("Your html file has been created successfully!"));
   //open created file
   //open("http://localhost:port/filename", { app: "chrome" });
 };

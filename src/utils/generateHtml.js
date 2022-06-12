@@ -1,7 +1,6 @@
-const generateHtml = (manager, team, filename) => {
+const generateHtml = (manager, team) => {
   console.log(manager);
   console.log(team);
-  console.log(filename);
   console.log("html generated");
 };
 
