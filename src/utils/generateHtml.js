@@ -37,14 +37,12 @@ const generateHtml = (manager, team) => {
 
   //create string for manager section
   const createManagerHtml = () => {
-    const managerName = manager.name;
-
     return `<section
         class="manager-container d-flex flex-column align-items-center separator"
         id="manager-section">
         <div class="card employee-card m-2">
           <div class="card-body bg-manager">
-            <h5 class="card-title">${capitalCase(managerName)}</h5>
+            <h5 class="card-title">${capitalCase(manager.name)}</h5>
             <p class="card-subtitle">
               <i class="fa-solid fa-people-roof"></i> Manager
             </p>
