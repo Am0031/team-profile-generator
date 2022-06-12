@@ -29,7 +29,7 @@ const getTeamInfo = async () => {
   //start asking for new team members
   while (inProgress) {
     //present the selection question
-    const answer = await getUserAnswers(selectionQuestion);
+    const answer = (await getUserAnswers(selectionQuestion)).employeeRole;
 
     //if exit, set in progress to false
     if (answer === "exit") {
@@ -38,13 +38,13 @@ const getTeamInfo = async () => {
       //if engineer, start the engineer questions (inquirer) + save engineer in array
       if (answer === "engineer") {
         const engineer = await getUserAnswers(engineerQuestions);
-        engineer[role] = "engineer";
+        engineer.role = "engineer";
         team.push(engineer);
       }
       //if intern, start the intern questions (inquirer) + save intern in array
       if (answer === "intern") {
         const intern = await getUserAnswers(internQuestions);
-        intern[role] = "intern";
+        intern.role = "intern";
         team.push(intern);
       }
     }

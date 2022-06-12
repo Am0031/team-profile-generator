@@ -22,7 +22,7 @@ const managerQuestions = [
       !answer ? chalk.yellow("This is mandatory. Please enter a name.") : true,
   },
   {
-    type: "number",
+    type: "input",
     name: "id",
     message: "Please enter the manager's employee ID:",
     validate: (answer) =>
@@ -38,7 +38,7 @@ const managerQuestions = [
         : true,
   },
   {
-    type: "number",
+    type: "input",
     name: "officeNumber",
     message: "Please provide the manager's office number:",
     validate: (answer) =>
@@ -79,7 +79,7 @@ const engineerQuestions = [
       !answer ? chalk.yellow("This is mandatory. Please enter a name.") : true,
   },
   {
-    type: "number",
+    type: "input",
     name: "id",
     message: "Please enter the engineer's employee ID:",
     validate: (answer) =>
@@ -114,7 +114,7 @@ const internQuestions = [
       !answer ? chalk.yellow("This is mandatory. Please enter a name.") : true,
   },
   {
-    type: "number",
+    type: "input",
     name: "id",
     message: "Please enter the intern's employee ID:",
     validate: (answer) =>
