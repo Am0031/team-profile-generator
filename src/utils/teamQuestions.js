@@ -63,8 +63,8 @@ const selectionQuestion = [
         value: "intern",
       },
       {
-        name: "None",
-        value: "none",
+        name: "None - Exit",
+        value: "exit",
       },
     ],
   },

@@ -12,43 +12,73 @@ const {
 } = require("./utils/teamQuestions");
 const generateHtml = require("./utils/generateHtml");
 
-//functions needed to get the info from the user
-const getManagerInfo = () => {
-  //prompt questions from the manager questions set (inquirer)
+//function to get answers from user
+const getUserAnswers = async (questions) => {
+  const answers = await inquirer.prompt(questions);
+  return answers;
 };
 
-const getTeamInfo = () => {
-  //present the selection question
-  //if engineer, start the engineer questions (inquirer) + back to selection question
-  //set in progress to true
-  //if intern, start intern questions (inquirer) + back to selection question
-  //set in progress to true
-  //if exit, set in progress to false
-};
+//function to get the team structure depending on selection question answers
+const getTeamInfo = async () => {
+  //set up the team array
+  const team = [];
 
-const getFileName = () => {
-  //prompt question for filename (inquirer)
+  //set up the inProgress variable
+  let inProgress = true;
+
+  //start asking for new team members
+  while (inProgress) {
+    //present the selection question
+    const answer = await getUserAnswers(selectionQuestion);
+
+    //if exit, set in progress to false
+    if (answer === "exit") {
+      inProgress = false;
+    } else {
+      //if engineer, start the engineer questions (inquirer) + save engineer in array
+      if (answer === "engineer") {
+        const engineer = await getUserAnswers(engineerQuestions);
+        engineer[role] = "engineer";
+        team.push(engineer);
+      }
+      //if intern, start the intern questions (inquirer) + save intern in array
+      if (answer === "intern") {
+        const intern = await getUserAnswers(internQuestions);
+        intern[role] = "intern";
+        team.push(intern);
+      }
+    }
+  }
+
+  return team;
 };
 
 //main function
-const init = () => {
-  console.log("Let's build your team structure!");
+const init = async () => {
+  console.log(
+    "Let's build your team structure! Starting with the team manager..."
+  );
 
   //start the manager questions
-  const managerAnswers = getManagerInfo();
+  const manager = await getUserAnswers(managerQuestions);
 
+  console.log("Now let's add engineers and interns!");
   //move onto team structure
-  const teamAnswers = getTeamInfo();
+  const team = await getTeamInfo();
 
+  console.log("Your team is complete.");
   //ask for filename
-  const filename = getFileName();
+  const filename = await getUserAnswers(filenameQuestion);
 
+  console.log("Generating your html string from your answers...");
   //generate html string
-  const htmlString = generateHtml(managerAnswers, teamAnswers, filename);
+  const htmlString = generateHtml(manager, team, filename);
 
+  console.log("Creating your html file...");
   //write to new file
   writeToFile(filename, htmlString);
 
+  console.log("Your html file has been created successfully!");
   //open created file
   //open("http://localhost:port/filename", { app: "chrome" });
 };
