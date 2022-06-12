@@ -9,7 +9,7 @@ const { paramCase } = require("change-case");
 const writeToFile = (name, string) => {
   try {
     const filename = paramCase(name.filename);
-    const filepath = path.join(__dirname, "../dist", `${filename}.html`);
+    const filepath = path.join(__dirname, `../../dist/${filename}.html`);
     // write data to new file
     fs.writeFileSync(filepath, string);
   } catch (error) {
