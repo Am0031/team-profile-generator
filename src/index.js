@@ -69,9 +69,13 @@ const init = async () => {
   //move onto team structure
   const team = await getTeamInfo();
 
-  console.log(chalk.green("Your team is complete."));
+  console.log(
+    chalk.green(
+      `Your team is complete and has ${team.length + 1} team members!`
+    )
+  );
   //ask for filename
-  const filename = await getUserAnswers(filenameQuestion);
+  const filename = (await getUserAnswers(filenameQuestion)).filename;
 
   console.log(chalk.yellow("Generating your html string from your answers..."));
   //generate html string
@@ -83,7 +87,7 @@ const init = async () => {
 
   console.log(chalk.green("Your html file has been created successfully!"));
   //open created file
-  open(`http://127.0.0.1:5500/dist/${paramCase(filename.filename)}.html`, {
+  open(`http://127.0.0.1:5500/dist/${paramCase(filename)}.html`, {
     app: "chrome",
   });
 };

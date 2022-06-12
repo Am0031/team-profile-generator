@@ -2,6 +2,15 @@
 const { capitalCase } = require("change-case");
 
 const generateHtml = (manager, team) => {
+  const engineers = team.filter((employee) => employee.role === "engineer");
+  const interns = team.filter((employee) => employee.role === "intern");
+  const recapTable = {
+    manager: 1,
+    engineers: engineers.length,
+    interns: interns.length,
+  };
+  console.table(recapTable);
+
   //static string for html head section
   const headHtml = `<head>
   <meta charset="utf-8" />
@@ -102,11 +111,12 @@ const generateHtml = (manager, team) => {
     </div>`;
     };
 
-    const engineers = team.filter((employee) => employee.role === "engineer");
     return engineers.length === 0
-      ? `<div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
-    No engineers
-  </div>`
+      ? `<section
+      class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
+      id="engineer-section">
+      <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
+    No engineers </div></section>`
       : `<section
     class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
     id="engineer-section">
@@ -147,11 +157,12 @@ const generateHtml = (manager, team) => {
           </div>`;
     };
 
-    const interns = team.filter((employee) => employee.role === "intern");
     return interns.length === 0
-      ? `<div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
-    No interns
-  </div>`
+      ? `<section
+      class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
+      id="intern-section">
+      <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
+    No interns </div></section>`
       : `<section
       class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
       id="intern-section">
