@@ -29,7 +29,7 @@ const getTeamInfo = async () => {
   //start asking for new team members
   while (inProgress) {
     //present the selection question
-    const answer = (await getUserAnswers(selectionQuestion)).employeeRole;
+    const answer = (await getUserAnswers(selectionQuestion)).selection;
 
     //if exit, set in progress to false
     if (answer === "exit") {

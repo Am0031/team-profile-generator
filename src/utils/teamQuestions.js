@@ -19,14 +19,20 @@ const managerQuestions = [
     name: "name",
     message: "Please enter the manager's name:",
     validate: (answer) =>
-      !answer ? chalk.yellow("This is mandatory. Please enter a name.") : true,
+      !answer
+        ? chalk.yellow("This is mandatory. Please enter a team name.")
+        : true,
   },
   {
     type: "input",
     name: "id",
     message: "Please enter the manager's employee ID:",
     validate: (answer) =>
-      !answer ? chalk.yellow("This is mandatory. Please enter an ID.") : true,
+      answer && !isNaN(answer)
+        ? true
+        : chalk.yellow(
+            "This is mandatory and must be a number. Please enter a valid id."
+          ),
   },
   {
     type: "input",
@@ -42,16 +48,18 @@ const managerQuestions = [
     name: "officeNumber",
     message: "Please provide the manager's office number:",
     validate: (answer) =>
-      !answer
-        ? chalk.yellow("This is mandatory. Please enter an office number.")
-        : true,
+      answer && !isNaN(answer)
+        ? true
+        : chalk.yellow(
+            "This is mandatory and must be a number. Please enter a valid office number."
+          ),
   },
 ];
 
 const selectionQuestion = [
   {
     type: "list",
-    name: "employeeRole",
+    name: "selection",
     message: "What team member would you like to add next?",
     choices: [
       {
@@ -83,7 +91,11 @@ const engineerQuestions = [
     name: "id",
     message: "Please enter the engineer's employee ID:",
     validate: (answer) =>
-      !answer ? chalk.yellow("This is mandatory. Please enter an ID.") : true,
+      answer && !isNaN(answer)
+        ? true
+        : chalk.yellow(
+            "This is mandatory and must be a number. Please enter a valid id."
+          ),
   },
   {
     type: "input",
@@ -118,7 +130,11 @@ const internQuestions = [
     name: "id",
     message: "Please enter the intern's employee ID:",
     validate: (answer) =>
-      !answer ? chalk.yellow("This is mandatory. Please enter an ID.") : true,
+      answer && !isNaN(answer)
+        ? true
+        : chalk.yellow(
+            "This is mandatory and must be a number. Please enter a valid id."
+          ),
   },
   {
     type: "input",
@@ -131,7 +147,7 @@ const internQuestions = [
   },
   {
     type: "input",
-    name: "githubUsername",
+    name: "school",
     message: "Please provide the intern's school:",
     validate: (answer) =>
       !answer
