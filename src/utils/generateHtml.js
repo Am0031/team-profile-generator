@@ -1,9 +1,17 @@
 //requiring change-case module
 const { capitalCase } = require("change-case");
 
+//requiring classes
+const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
+
+//main function to generate the overall html string
 const generateHtml = (teamName, manager, team) => {
-  const engineers = team.filter((employee) => employee.role === "engineer");
-  const interns = team.filter((employee) => employee.role === "intern");
+  const engineers = team.filter((employee) => employee instanceof Engineer);
+  const interns = team.filter((employee) => employee instanceof Intern);
+
   const recapTable = {
     manager: 1,
     engineers: engineers.length,

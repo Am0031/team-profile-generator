@@ -48,14 +48,12 @@ const getTeamInfo = async () => {
       case "engineer":
         const engineerAnswers = await getUserAnswers(engineerQuestions);
         const engineer = new Engineer(engineerAnswers);
-        // engineer.role = "engineer";
         team.push(engineer);
         break;
       //if intern, start the intern questions (inquirer) + create new intern + save in array
       case "intern":
         const internAnswers = await getUserAnswers(internQuestions);
         const intern = new Intern(internAnswers);
-        // intern.role = "intern";
         team.push(intern);
         break;
     }
@@ -74,17 +72,14 @@ const init = async () => {
 
   //start with asking the team name
   const teamName = await getUserAnswers(teamNameQuestion);
-  console.log(teamName);
-  // teamInfo.push(teamName);
+
   //start the manager questions
   const managerAnswers = await getUserAnswers(managerQuestions);
   const manager = new Manager(managerAnswers);
-  // teamInfo.push(manager);
 
   console.log(chalk.blue("Now let's add engineers and interns!"));
   //move onto team structure
   const team = await getTeamInfo();
-  console.log(team);
 
   console.log(
     chalk.green(
