@@ -8,7 +8,7 @@ const open = require("open");
 const { paramCase } = require("change-case");
 
 //requiring classes
-const Employee = require("./lib/Employee");
+const Team = require("./lib/Team");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -62,46 +62,46 @@ const getMembersInfo = async () => {
 
 //main function
 const init = async () => {
+  //start with asking the team name
   console.log(
     chalk.blue(
-      "Let's build your team structure! Starting with the team manager..."
+      "Let's build your team structure! Starting with the team name and its manager..."
     )
   );
-
-  //start with asking the team name
   const teamName = (await getUserAnswers(teamNameQuestion)).team;
 
   //start the manager questions
   const manager = new Manager(await getUserAnswers(managerQuestions));
 
-  console.log(chalk.blue("Now let's add engineers and interns!"));
   //move onto team structure
+  console.log(chalk.blue("Now let's add engineers and interns!"));
   const members = await getMembersInfo();
   members.push(manager);
 
-  const team = {
-    teamName,
-    members,
-  };
-
+  const team = new Team(teamName, members);
   console.log(
     chalk.green(
       `Your team is complete and has ${team.members.length} team members!`
     )
   );
+
   //ask for filename
   const filename = (await getUserAnswers(filenameQuestion)).filename;
 
-  console.log(chalk.yellow("Generating your html string from your answers..."));
   //generate html string
+  console.log(chalk.yellow("Generating your html string from your answers..."));
   const htmlString = generateHtml(team);
 
-  console.log(chalk.yellow("Creating your html file..."));
   //write to new file
+  console.log(chalk.yellow("Creating your html file..."));
   writeToFile(filename, htmlString);
 
-  console.log(chalk.green("Your html file has been created successfully!"));
   //open created file
+  console.log(
+    chalk.green(
+      "Your html file has been created successfully and will open in your chrome browser!"
+    )
+  );
   open(`http://127.0.0.1:5500/dist/${paramCase(filename)}.html`, {
     app: "chrome",
   });
