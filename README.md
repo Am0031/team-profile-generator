@@ -13,6 +13,8 @@ Demo video: [Go to demo video]()
 
 - [About the Project](#about-the-project)
 - [Technologies](#technologies)
+- [HTML Wireframe](#html-wireframe)
+- [Main logic of the application](#main-logic-of-the-application)
 - [Installation](#installation)
 - [Demo video](#demo-video-of-the-application)
 - [Contact me](#contact-me)
@@ -38,6 +40,16 @@ In addition, the following coding concepts were used:
 - classes : to define our team and different team members
 - modules : to separate parts of the code into logical blocks and keep code blocks easy to read
 - test files: to validate the behaviour of some modules
+
+## HTML Wireframe
+
+The desired layout when generating the team profile is as follow:
+![HTML wireframe](./other/screenshots/wireframe.png)
+
+## Main Logic of the application
+
+This diagram illustrates the main steps of the application, the outputs expected at each step and the packages needed:
+![Main logic diagram](./other/screenshots/main-logic.png)
 
 ## Installation
 
