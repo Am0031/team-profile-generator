@@ -61,7 +61,7 @@ const generateHtml = (team) => {
   //create string for manager section
   const createManagerHtml = () => {
     const createManagerCardHtml = (each) => {
-      return `<div class="card employee-card m-2">
+      return `<div class="card employee-card manager-card m-2">
       <div class="card-body bg-manager">
         <h5 class="card-title">${capitalCase(each.name)}</h5>
         <p class="card-subtitle">
@@ -90,14 +90,14 @@ const generateHtml = (team) => {
     return `<section
         class="manager-container d-flex flex-column align-items-center separator"
         id="manager-section">
-        ${manager.map(createManagerCardHtml).join()}
+        ${manager.map(createManagerCardHtml).join("")}
       </section>`;
   };
 
   //create string for engineer section
   const createEngineerHtml = () => {
     const createEngineerCardHtml = (each) => {
-      return `<div class="card employee-card m-2">
+      return `<div class="card employee-card engineer-card m-2">
     <div class="card-body bg-engineer">
       <h5 class="card-title">${capitalCase(each.name)}</h5>
       <p class="card-subtitle">
@@ -138,14 +138,14 @@ const generateHtml = (team) => {
       : `<section
     class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
     id="engineer-section">
-    ${engineers.map(createEngineerCardHtml).join()}
+    ${engineers.map(createEngineerCardHtml).join("")}
   </section>`;
   };
 
   //create string for intern section
   const createInternHtml = () => {
     const createInternCardHtml = (each) => {
-      return `<div class="card employee-card m-2">
+      return `<div class="card employee-card intern-card m-2">
           <div class="card-body bg-intern">
             <h5 class="card-title">${capitalCase(each.name)}</h5>
             <p class="card-subtitle">
@@ -184,7 +184,7 @@ const generateHtml = (team) => {
       : `<section
       class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
       id="intern-section">
-      ${interns.map(createInternCardHtml).join()}
+      ${interns.map(createInternCardHtml).join("")}
     </section>`;
   };
 
