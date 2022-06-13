@@ -8,12 +8,18 @@ const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
 //main function to generate the overall html string
-const generateHtml = (teamName, manager, team) => {
-  const engineers = team.filter((employee) => employee instanceof Engineer);
-  const interns = team.filter((employee) => employee instanceof Intern);
+const generateHtml = (team) => {
+  const teamName = team.teamName;
+  const manager = team.members.filter(
+    (employee) => employee instanceof Manager
+  );
+  const engineers = team.members.filter(
+    (employee) => employee instanceof Engineer
+  );
+  const interns = team.members.filter((employee) => employee instanceof Intern);
 
   const recapTable = {
-    manager: 1,
+    managers: manager.length,
     engineers: engineers.length,
     interns: interns.length,
   };
@@ -48,39 +54,43 @@ const generateHtml = (teamName, manager, team) => {
   //create string for header
   const headerHtml = `<header class="jumbotron jumbotron-fluid header-title mb-0">
   <div class="container">
-    <h1 class="display-4 text-center">${capitalCase(teamName.team)}</h1>
+    <h1 class="display-4 text-center">${capitalCase(teamName)}</h1>
   </div>
 </header>`;
 
   //create string for manager section
   const createManagerHtml = () => {
+    const createManagerCardHtml = (each) => {
+      return `<div class="card employee-card m-2">
+      <div class="card-body bg-manager">
+        <h5 class="card-title">${capitalCase(each.name)}</h5>
+        <p class="card-subtitle">
+          <i class="fa-solid fa-people-roof"></i> Manager
+        </p>
+      </div>
+      <ul class="list-group list-group-flush p-2 list-container">
+        <li class="list-group-item">ID: ${each.id}</li>
+        <li class="list-group-item d-flex flex-row">
+          <p class="link-text pr-2">
+            <i class="fa-solid fa-envelope"></i> Email:
+          </p>
+          <a href="mailto:${each.email}" target="_blank" class="card-link"
+            >${each.email}</a
+          >
+        </li>
+        <li class="list-group-item">
+          <i class="fa-solid fa-door-closed"></i> Office number: ${
+            each.officeNumber
+          }
+        </li>
+      </ul>
+    </div>`;
+    };
+
     return `<section
         class="manager-container d-flex flex-column align-items-center separator"
         id="manager-section">
-        <div class="card employee-card m-2">
-          <div class="card-body bg-manager">
-            <h5 class="card-title">${capitalCase(manager.name)}</h5>
-            <p class="card-subtitle">
-              <i class="fa-solid fa-people-roof"></i> Manager
-            </p>
-          </div>
-          <ul class="list-group list-group-flush p-2 list-container">
-            <li class="list-group-item">ID: ${manager.id}</li>
-            <li class="list-group-item d-flex flex-row">
-              <p class="link-text pr-2">
-                <i class="fa-solid fa-envelope"></i> Email:
-              </p>
-              <a href="mailto:bob@gmail.com" target="_blank" class="card-link"
-                >${manager.email}</a
-              >
-            </li>
-            <li class="list-group-item">
-              <i class="fa-solid fa-door-closed"></i> Office number: ${
-                manager.officeNumber
-              }
-            </li>
-          </ul>
-        </div>
+        ${manager.map(createManagerCardHtml).join()}
       </section>`;
   };
 

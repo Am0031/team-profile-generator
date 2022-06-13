@@ -27,7 +27,7 @@ const generateHtml = require("./utils/generateHtml");
 const writeToFile = require("./utils/writeToFile");
 
 //function to get the team structure depending on selection question answers
-const getTeamInfo = async () => {
+const getMembersInfo = async () => {
   //set up the team array
   const team = [];
 
@@ -46,14 +46,12 @@ const getTeamInfo = async () => {
         break;
       //if engineer, start the engineer questions (inquirer) + create new engineer + save in array
       case "engineer":
-        const engineerAnswers = await getUserAnswers(engineerQuestions);
-        const engineer = new Engineer(engineerAnswers);
+        const engineer = new Engineer(await getUserAnswers(engineerQuestions));
         team.push(engineer);
         break;
       //if intern, start the intern questions (inquirer) + create new intern + save in array
       case "intern":
-        const internAnswers = await getUserAnswers(internQuestions);
-        const intern = new Intern(internAnswers);
+        const intern = new Intern(await getUserAnswers(internQuestions));
         team.push(intern);
         break;
     }
@@ -71,19 +69,24 @@ const init = async () => {
   );
 
   //start with asking the team name
-  const teamName = await getUserAnswers(teamNameQuestion);
+  const teamName = (await getUserAnswers(teamNameQuestion)).team;
 
   //start the manager questions
-  const managerAnswers = await getUserAnswers(managerQuestions);
-  const manager = new Manager(managerAnswers);
+  const manager = new Manager(await getUserAnswers(managerQuestions));
 
   console.log(chalk.blue("Now let's add engineers and interns!"));
   //move onto team structure
-  const team = await getTeamInfo();
+  const members = await getMembersInfo();
+  members.push(manager);
+
+  const team = {
+    teamName,
+    members,
+  };
 
   console.log(
     chalk.green(
-      `Your team is complete and has ${team.length + 1} team members!`
+      `Your team is complete and has ${team.members.length} team members!`
     )
   );
   //ask for filename
@@ -91,7 +94,7 @@ const init = async () => {
 
   console.log(chalk.yellow("Generating your html string from your answers..."));
   //generate html string
-  const htmlString = generateHtml(teamName, manager, team);
+  const htmlString = generateHtml(team);
 
   console.log(chalk.yellow("Creating your html file..."));
   //write to new file
