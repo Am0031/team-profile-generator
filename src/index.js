@@ -7,8 +7,15 @@ const open = require("open");
 //requiring the change-case for correct filename
 const { paramCase } = require("change-case");
 
+//requiring classes
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
 //requiring the utils js files
 const {
+  teamNameQuestion,
   managerQuestions,
   selectionQuestion,
   engineerQuestions,
@@ -32,22 +39,25 @@ const getTeamInfo = async () => {
     //present the selection question
     const answer = (await getUserAnswers(selectionQuestion)).selection;
 
-    //if exit, set in progress to false
-    if (answer === "exit") {
-      inProgress = false;
-    } else {
-      //if engineer, start the engineer questions (inquirer) + save engineer in array
-      if (answer === "engineer") {
-        const engineer = await getUserAnswers(engineerQuestions);
-        engineer.role = "engineer";
+    switch (answer) {
+      //if exit, set in progress to false
+      case "exit":
+        inProgress = false;
+        break;
+      //if engineer, start the engineer questions (inquirer) + create new engineer + save in array
+      case "engineer":
+        const engineerAnswers = await getUserAnswers(engineerQuestions);
+        const engineer = new Engineer(engineerAnswers);
+        // engineer.role = "engineer";
         team.push(engineer);
-      }
-      //if intern, start the intern questions (inquirer) + save intern in array
-      if (answer === "intern") {
-        const intern = await getUserAnswers(internQuestions);
-        intern.role = "intern";
+        break;
+      //if intern, start the intern questions (inquirer) + create new intern + save in array
+      case "intern":
+        const internAnswers = await getUserAnswers(internQuestions);
+        const intern = new Intern(internAnswers);
+        // intern.role = "intern";
         team.push(intern);
-      }
+        break;
     }
   }
 
@@ -62,12 +72,19 @@ const init = async () => {
     )
   );
 
+  //start with asking the team name
+  const teamName = await getUserAnswers(teamNameQuestion);
+  console.log(teamName);
+  // teamInfo.push(teamName);
   //start the manager questions
-  const manager = await getUserAnswers(managerQuestions);
+  const managerAnswers = await getUserAnswers(managerQuestions);
+  const manager = new Manager(managerAnswers);
+  // teamInfo.push(manager);
 
   console.log(chalk.blue("Now let's add engineers and interns!"));
   //move onto team structure
   const team = await getTeamInfo();
+  console.log(team);
 
   console.log(
     chalk.green(
@@ -79,7 +96,7 @@ const init = async () => {
 
   console.log(chalk.yellow("Generating your html string from your answers..."));
   //generate html string
-  const htmlString = generateHtml(manager, team);
+  const htmlString = generateHtml(teamName, manager, team);
 
   console.log(chalk.yellow("Creating your html file..."));
   //write to new file

@@ -1,7 +1,7 @@
 //requiring change-case module
 const { capitalCase } = require("change-case");
 
-const generateHtml = (manager, team) => {
+const generateHtml = (teamName, manager, team) => {
   const engineers = team.filter((employee) => employee.role === "engineer");
   const interns = team.filter((employee) => employee.role === "intern");
   const recapTable = {
@@ -40,7 +40,7 @@ const generateHtml = (manager, team) => {
   //create string for header
   const headerHtml = `<header class="jumbotron jumbotron-fluid header-title mb-0">
   <div class="container">
-    <h1 class="display-4 text-center">${capitalCase(manager.team)}</h1>
+    <h1 class="display-4 text-center">${capitalCase(teamName.team)}</h1>
   </div>
 </header>`;
 

@@ -4,7 +4,7 @@ const chalk = require("chalk");
 //requiring email validator package
 const validator = require("email-validator");
 
-const managerQuestions = [
+const teamNameQuestion = [
   {
     type: "input",
     name: "team",
@@ -14,6 +14,8 @@ const managerQuestions = [
         ? chalk.yellow("This is mandatory. Please enter a team name.")
         : true,
   },
+];
+const managerQuestions = [
   {
     type: "input",
     name: "name",
@@ -167,6 +169,7 @@ const filenameQuestion = [
 ];
 
 module.exports = {
+  teamNameQuestion,
   managerQuestions,
   selectionQuestion,
   engineerQuestions,
