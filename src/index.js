@@ -64,7 +64,7 @@ const getMembersInfo = async () => {
 const init = async () => {
   //start with asking the team name
   console.log(
-    chalk.blue(
+    chalk.cyan(
       "Let's build your team structure! Starting with the team name and its manager..."
     )
   );
@@ -74,7 +74,7 @@ const init = async () => {
   const manager = new Manager(await getUserAnswers(managerQuestions));
 
   //move onto team structure
-  console.log(chalk.blue("Now let's add engineers and interns!"));
+  console.log(chalk.cyan("Now let's add engineers and interns!"));
   const members = await getMembersInfo();
   members.push(manager);
 
