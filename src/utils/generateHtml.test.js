@@ -40,25 +40,22 @@ describe("describe", () => {
   };
 
   describe("test html generation", () => {
-    it("should confirm number of manager cards in section", () => {
+    it("should confirm number of manager cards in section is equal to 1", () => {
       const actual = generateHtml(teamData);
       document.body.innerHTML = actual;
-
       const managers = document.querySelectorAll(".manager-card");
       expect(managers.length).toEqual(1);
     });
 
-    it("should confirm number of engineer cards in section", () => {
+    it("should confirm number of engineer cards in section is equal to 2", () => {
       const actual = generateHtml(teamData);
       document.body.innerHTML = actual;
-
       const engineers = document.querySelectorAll(".engineer-card");
       expect(engineers.length).toEqual(2);
     });
-    it("should confirm number of intern cards in section", () => {
+    it("should confirm number of intern cards in section is equal to 1", () => {
       const actual = generateHtml(teamData);
       document.body.innerHTML = actual;
-
       const interns = document.querySelectorAll(".intern-card");
       expect(interns.length).toEqual(1);
     });
