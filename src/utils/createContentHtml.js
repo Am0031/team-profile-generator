@@ -1,12 +1,6 @@
 //requiring change-case module
 const { capitalCase } = require("change-case");
 
-const {
-  createManagerCardHtml,
-  createEngineerCardHtml,
-  createInternCardHtml,
-} = require("./createCardsHtml");
-
 //static string for html head section
 const createHeadHtml = (string) => {
   return `<head>
@@ -49,7 +43,7 @@ const createManagerHtml = (managers) => {
   return `<section
       class="manager-container d-flex flex-column align-items-center separator"
       id="manager-section">
-      ${managers.map(createManagerCardHtml).join("")}
+      ${managers.map((manager) => manager.createCardHtml()).join("")}
     </section>`;
 };
 
@@ -64,7 +58,7 @@ const createEngineerHtml = (engineers) => {
     : `<section
   class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
   id="engineer-section">
-  ${engineers.map(createEngineerCardHtml).join("")}
+  ${engineers.map((engineer) => engineer.createCardHtml()).join("")}
 </section>`;
 };
 
@@ -79,7 +73,7 @@ const createInternHtml = (interns) => {
     : `<section
     class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
     id="intern-section">
-    ${interns.map(createInternCardHtml).join("")}
+    ${interns.map((intern) => intern.createCardHtml()).join("")}
   </section>`;
 };
 
