@@ -1,20 +1,22 @@
-//requiring change-case module
-const { capitalCase } = require("change-case");
-
-//requiring classes
+//requiring classes and functions to create strings
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
-const createHeadHtml = require("./createHeadHtml");
 const {
-  createManagerCardHtml,
-  createEngineerCardHtml,
-  createInternCardHtml,
-} = require("./createCardsHtml");
+  createHeadHtml,
+  createHeaderHtml,
+  createManagerHtml,
+  createEngineerHtml,
+  createInternHtml,
+  footerHtml,
+} = require("./createContentHtml");
 
 //main function to generate the overall html string
 const generateHtml = (team) => {
+  //get the team name for the header
   const teamName = team.teamName;
+
+  //separate the team members for each section
   const manager = team.members.filter(
     (employee) => employee instanceof Manager
   );
@@ -23,6 +25,7 @@ const generateHtml = (team) => {
   );
   const interns = team.members.filter((employee) => employee instanceof Intern);
 
+  //gather number of team members for displaying a recap table in the console
   const recapTable = {
     managers: manager.length,
     engineers: engineers.length,
@@ -30,64 +33,14 @@ const generateHtml = (team) => {
   };
   console.table(recapTable);
 
-  //create string for header
-  const headerHtml = `<header class="jumbotron jumbotron-fluid header-title mb-0">
-  <div class="container">
-    <h1 class="display-4 text-center">${capitalCase(teamName)}</h1>
-  </div>
-</header>`;
+  //main call to generate the section strings
+  const headHtml = createHeadHtml("Team Profile");
+  const headerHtml = createHeaderHtml(teamName);
+  const managerHtml = createManagerHtml(manager);
+  const engineerHtml = createEngineerHtml(engineers);
+  const internHtml = createInternHtml(interns);
 
-  //create string for manager section
-  const createManagerHtml = () => {
-    return `<section
-        class="manager-container d-flex flex-column align-items-center separator"
-        id="manager-section">
-        ${manager.map(createManagerCardHtml).join("")}
-      </section>`;
-  };
-
-  //create string for engineer section
-  const createEngineerHtml = () => {
-    return engineers.length === 0
-      ? `<section
-      class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
-      id="engineer-section">
-      <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
-    No engineers </div></section>`
-      : `<section
-    class="engineer-container d-flex flex-row flex-wrap justify-content-around align-items-center separator"
-    id="engineer-section">
-    ${engineers.map(createEngineerCardHtml).join("")}
-  </section>`;
-  };
-
-  //create string for intern section
-  const createInternHtml = () => {
-    return interns.length === 0
-      ? `<section
-      class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
-      id="intern-section">
-      <div class="warning-message alert-warning w-100 mt-2 mb-2 text-center">
-    No interns </div></section>`
-      : `<section
-      class="intern-container d-flex flex-row flex-wrap justify-content-around align-items-center"
-      id="intern-section">
-      ${interns.map(createInternCardHtml).join("")}
-    </section>`;
-  };
-
-  //static string for footer
-  const footerHtml = `<footer class="footer p-3">
-  <div class="footer-text w-100 text-center">&copy; 2022 Copyright</div>
-</footer>`;
-
-  //call to generate the section strings
-  const headHtml = createHeadHtml("TeamProfile");
-  const managerHtml = createManagerHtml();
-  const engineerHtml = createEngineerHtml();
-  const internHtml = createInternHtml();
-
-  //return the overall string
+  //return the overall string for a complete html file
   return ` <!DOCTYPE html>
   <html>
   ${headHtml}
