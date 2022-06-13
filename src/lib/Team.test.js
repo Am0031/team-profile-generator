@@ -50,12 +50,12 @@ describe("Team", () => {
       const actual = new Team(testName, testMembers);
       expect(actual.teamName).toEqual("coding team");
     });
-    it("should get the number of objects in the members array and find it equal to 4", () => {
+    it("should get the correct number of objects in the members array", () => {
       const expected = 4;
       const actual = new Team(testName, testMembers);
       expect(actual.members.length).toEqual(expected);
     });
-    it("should get the number of Employee instances and find it equal to 4", () => {
+    it("should get the correct number of Employee instances", () => {
       const expected = 4;
       const actual = new Team(testName, testMembers);
       const employeeInstances = actual.members.filter(
@@ -63,14 +63,14 @@ describe("Team", () => {
       );
       expect(employeeInstances.length).toEqual(expected);
     });
-    it("should get the number of Manager instances from the members array and result equals to 1", () => {
+    it("should get the correct number of Manager instances from the members array", () => {
       const actual = new Team(testName, testMembers);
       const managerInstances = actual.members.filter(
         (item) => item instanceof Manager
       );
       expect(managerInstances.length).toEqual(1);
     });
-    it("should get the number of Engineer instances from the members array and result equals to 2", () => {
+    it("should get the correct number of Engineer instances from the members array", () => {
       const actual = new Team(testName, testMembers);
       const engineerInstances = actual.members.filter(
         (item) => item instanceof Engineer
@@ -78,7 +78,7 @@ describe("Team", () => {
       expect(engineerInstances.length).toEqual(2);
     });
 
-    it("should get the number of Intern instances from the members array and result equals to 1", () => {
+    it("should get the correct number of Intern instances from the members array", () => {
       const actual = new Team(testName, testMembers);
       const internInstances = actual.members.filter(
         (item) => item instanceof Intern
