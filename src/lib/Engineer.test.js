@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const Engineer = require("./Engineer");
 
 describe("Engineer", () => {
@@ -42,11 +46,29 @@ describe("Engineer", () => {
   describe("methods", () => {
     // methods getName, getId, getEmail, getRole are accessible in the parent instance and already tested in Employee tests
 
-    //new method for office number specific to Manager
+    //method for github username specific to Engineer
     it("should get the github username of the engineer created", () => {
       const engineer = new Engineer(testData);
       const actual = engineer.getGithubUsername();
       expect(actual).toEqual(engineer.githubUsername);
+    });
+
+    //method for creating the html string specific to the engineer card
+    it("should confirm the manager info has been populated correctly in the string", () => {
+      const engineer = new Engineer(testData);
+      const actual = engineer.createCardHtml();
+      document.body.innerHTML = actual;
+
+      expect(document.querySelector(".card-title").innerHTML).toEqual(
+        "Bob Smith"
+      );
+      expect(
+        document.querySelector(".list-container > li:first-of-type").innerHTML
+      ).toEqual("ID: 521");
+      expect(document.querySelector(".email-link").innerHTML).toEqual(
+        "bob.smith@example.org"
+      );
+      expect(document.querySelector(".github-link").innerHTML).toEqual("Bob45");
     });
   });
 });

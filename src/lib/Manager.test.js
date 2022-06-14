@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const Manager = require("./Manager");
 
 describe("Manager", () => {
@@ -42,11 +46,31 @@ describe("Manager", () => {
   describe("methods", () => {
     // methods getName, getId, getEmail, getRole are accessible in the parent instance and already tested in Employee tests
 
-    //new method for office number specific to Manager
+    //method for office number specific to Manager
     it("should get the office number of the manager created", () => {
       const manager = new Manager(testData);
       const actual = manager.getOfficeNumber();
       expect(actual).toEqual(manager.officeNumber);
+    });
+
+    //method for creating the html string specific to the manager card
+    it("should confirm the manager info has been populated correctly in the string", () => {
+      const manager = new Manager(testData);
+      const actual = manager.createCardHtml();
+      document.body.innerHTML = actual;
+
+      expect(document.querySelector(".card-title").innerHTML).toEqual(
+        "Bob Smith"
+      );
+      expect(
+        document.querySelector(".list-container > li:first-of-type").innerHTML
+      ).toEqual("ID: 521");
+      expect(document.querySelector(".email-link").innerHTML).toEqual(
+        "bob.smith@example.org"
+      );
+      expect(document.querySelector(".office-number").innerHTML).toEqual(
+        "Office number: 45"
+      );
     });
   });
 });

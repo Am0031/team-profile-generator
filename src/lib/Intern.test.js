@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const Intern = require("./Intern");
 
 describe("Intern", () => {
@@ -42,11 +46,31 @@ describe("Intern", () => {
   describe("methods", () => {
     // methods getName, getId, getEmail, getRole are accessible in the parent instance and already tested in Employee tests
 
-    //new method for office number specific to Manager
+    //method for school name specific to Intern
     it("should get the school of the Intern created", () => {
       const intern = new Intern(testData);
       const actual = intern.getSchool();
       expect(actual).toEqual(intern.school);
+    });
+
+    //method for creating the html string specific to the intern card
+    it("should confirm the intern info has been populated correctly in the string", () => {
+      const intern = new Intern(testData);
+      const actual = intern.createCardHtml();
+      document.body.innerHTML = actual;
+
+      expect(document.querySelector(".card-title").innerHTML).toEqual(
+        "Bob Smith"
+      );
+      expect(
+        document.querySelector(".list-container > li:first-of-type").innerHTML
+      ).toEqual("ID: 521");
+      expect(document.querySelector(".email-link").innerHTML).toEqual(
+        "bob.smith@example.org"
+      );
+      expect(document.querySelector(".school-name").innerHTML).toEqual(
+        "University of Birmingham"
+      );
     });
   });
 });

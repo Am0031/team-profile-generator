@@ -30,7 +30,7 @@ class Intern extends Employee {
             <a
               href="mailto:${this.email}"
               target="_blank"
-              class="card-link"
+              class="card-link email-link"
               >${this.email}</a
             >
           </li>
@@ -38,7 +38,7 @@ class Intern extends Employee {
             <p class="link-text pr-2">
               <i class="fa-solid fa-graduation-cap"></i> School:
             </p>
-            <p class="link-text">${this.school}</p>
+            <p class="link-text school-name">${this.school}</p>
           </li>
         </ul>
         </div>`;

@@ -27,14 +27,18 @@ class Manager extends Employee {
           <p class="link-text pr-2">
             <i class="fa-solid fa-envelope"></i> Email:
           </p>
-          <a href="mailto:${this.email}" target="_blank" class="card-link"
+          <a href="mailto:${
+            this.email
+          }" target="_blank" class="card-link email-link"
             >${this.email}</a
           >
         </li>
-        <li class="list-group-item">
-          <i class="fa-solid fa-door-closed"></i> Office number: ${
+        <li class="list-group-item d-flex flex-row">
+          <p class="link-text pr-2"><i class="fa-solid fa-door-closed"></i>
+          </p>
+          <p class="link-text pr-2 office-number">Office number: ${
             this.officeNumber
-          }
+          }</p>
         </li>
       </ul>
     </div>`;

@@ -27,7 +27,9 @@ class Engineer extends Employee {
         <p class="link-text pr-2">
           <i class="fa-solid fa-envelope"></i> Email:
         </p>
-        <a href="mailto:${this.email}" target="_blank" class="card-link"
+        <a href="mailto:${
+          this.email
+        }" target="_blank" class="card-link email-link"
           >${this.email}</a
         >
       </li>
@@ -38,7 +40,7 @@ class Engineer extends Employee {
         <a
           href="https://github.com/${this.githubUsername}"
           target="_blank"
-          class="card-link"
+          class="card-link github-link"
           >${this.githubUsername}</a
         >
       </li>
