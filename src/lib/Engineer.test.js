@@ -54,7 +54,7 @@ describe("Engineer", () => {
     });
 
     //method for creating the html string specific to the engineer card
-    it("should confirm the manager info has been populated correctly in the string", () => {
+    it("should confirm the engineer info has been populated correctly in the string", () => {
       const engineer = new Engineer(testData);
       const actual = engineer.createCardHtml();
       document.body.innerHTML = actual;
