@@ -17,6 +17,7 @@ Demo video: [Go to demo video]()
 - [Main logic of the application](#main-logic-of-the-application)
 - [Installation](#installation)
 - [Demo video](#demo-video-of-the-application)
+- [Test suites](#test-suites)
 - [Contact me](#contact-me)
 
 ## About the Project
@@ -88,6 +89,17 @@ Please click [here]() to open the video.
 You can also check out the html template that this application creates by looking at the file ["my-team.html"](./dist/junggle.html) available in this repository.
 
 ![Team profile demo gif](readme-generator-demo.gif)
+
+## Test suites
+
+The tests built for this application are focused on checking correct class behaviour and correct html generation:
+![Summary of tests](./other/screenshots/tests-status-summary.png)
+
+See below a sample view of the breakdown of some of the tests:
+
+![Employee tests](./other/screenshots/tests-employee.png)
+![Manager tests](./other/screenshots/tests-manager.png)
+![HTML generation tests](./other/screenshots/tests-generateHtml.png)
 
 ## License
 
