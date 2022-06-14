@@ -92,7 +92,7 @@ You can also check out the html template that this application creates by lookin
 
 ## Test suites
 
-The tests built for this application are focused on checking correct class behaviour and correct html generation:
+The tests built for this application are focused on checking correct class behaviour and correct html generation. There was no test built to check the behaviour of external modules, it is assumed that they are functioning correctly due to their popularity and widespread use.
 ![Summary of tests](./other/screenshots/tests-status-summary.png)
 
 See below a sample view of the breakdown of some of the tests:
