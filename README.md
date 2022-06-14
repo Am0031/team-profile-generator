@@ -7,7 +7,7 @@
 This is a team profile generator using node.js and the inquirer package.
 
 Github repo: [Go to Repo](https://github.com/Am0031/team-profile-generator/tree/dev)
-Demo video: [Go to demo video]()
+Demo video: [Go to Demo video](https://drive.google.com/file/d/1CH2OFQBZ5pyW4cKtX1qrRK81sBAKIvkC/view)
 
 ## Table of Contents
 
@@ -84,11 +84,11 @@ npm run start
 ## Demo video of the application
 
 This video shows how the application works.
-Please click [here]() to open the video.
+Please click [here](https://drive.google.com/file/d/1CH2OFQBZ5pyW4cKtX1qrRK81sBAKIvkC/view) to open the video.
 
-You can also check out the html template that this application creates by looking at the file ["my-team.html"](./dist/junggle.html) available in this repository.
+You can also check out the html template that this application creates by looking at the file ["sample-team.html"](./dist/sample-team.html) available in this repository.
 
-![Team profile demo gif](readme-generator-demo.gif)
+![Team profile demo gif](./other/team-profile-demo.gif)
 
 ## Test suites
 
