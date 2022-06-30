@@ -1,0 +1,82 @@
+/*General styling for the whole page - root variables*/
+:root {
+  --header: lightcoral;
+  --manager-name: lightskyblue;
+  --engineer-name: lightgoldenrodyellow;
+  --intern-name: lightcyan;
+  --list-style: lightgrey;
+}
+
+/*General styling for the whole page - body settings*/
+body {
+  box-sizing: border-box;
+  font-family: "Roboto";
+  font-size: 16px;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 2;
+  margin-bottom: 2rem;
+}
+
+section {
+  padding: 0.6rem;
+}
+.separator {
+  border-bottom: 1px solid var(--header);
+}
+p {
+  margin: 0;
+}
+
+/*Header and footer styling*/
+.header-title,
+.footer {
+  background-color: var(--header);
+}
+
+/*Employee card styling*/
+.employee-card {
+  min-width: 18rem;
+}
+.list-container {
+  padding: 0.3rem;
+  background-color: var(--list-style);
+}
+
+.bg-manager {
+  background-color: var(--manager-name);
+}
+.bg-engineer {
+  background-color: var(--engineer-name);
+}
+.bg-intern {
+  background-color: var(--intern-name);
+}
+
+/*Media query for responsiveness with screen size*/
+@media screen and (max-width: 590px) {
+  section {
+    padding: 0.6rem 0 0.6rem 0;
+  }
+  .employee-card {
+    min-width: 15rem;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    font-size: 12px;
+  }
+  section {
+    padding: 0.5rem 0 0.5rem 0;
+  }
+  .employee-card {
+    min-width: none;
+    width: 95%;
+  }
+}
